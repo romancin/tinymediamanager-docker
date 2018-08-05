@@ -26,7 +26,7 @@ Sample run command:
 docker run -d --name=tmm \
 -v /share/Container/tmm/config:/config \
 -v /share/Container/tmm/media:/media \
--e PGID=0 -e PUID=0 -e TZ=Europe/Madrid \
+-e GROUP_ID=0 -e USER_ID=0 -e TZ=Europe/Madrid \
 -p 5800:5800 \
 -p 5900:5900 \
 romancin/tmm:latest
