@@ -1,9 +1,9 @@
-# tmm-docker
+# tinymediamanager-docker
 
 A repository for creating a docker container including TinyMediaManager with GUI interface.
 
-[![](https://images.microbadger.com/badges/version/romancin/tmm.svg)](https://microbadger.com/images/romancin/tmm "Docker image version")
-[![](https://images.microbadger.com/badges/image/romancin/tmm.svg)](https://microbadger.com/images/romancin/tmm "Docker image size")
+[![](https://images.microbadger.com/badges/version/romancin/tinymediamanager.svg)](https://microbadger.com/images/romancin/tinymediamanager "Docker image version")
+[![](https://images.microbadger.com/badges/image/romancin/tinymediamanager.svg)](https://microbadger.com/images/romancin/tinymediamanager "Docker image size")
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X2CT2SWQCP74U)
 
 You can invite me a beer if you want ;) 
@@ -23,11 +23,11 @@ Instructions:
 Sample run command:
 
 ```bash
-docker run -d --name=tmm \
--v /share/Container/tmm/config:/config \
--v /share/Container/tmm/media:/media \
+docker run -d --name=tinymediamanager \
+-v /share/Container/tinymediamanager/config:/config \
+-v /share/Container/tinymediamanager/media:/media \
 -e GROUP_ID=0 -e USER_ID=0 -e TZ=Europe/Madrid \
 -p 5800:5800 \
 -p 5900:5900 \
-romancin/tmm:latest
+romancin/tinymediamanager:latest
 ```
