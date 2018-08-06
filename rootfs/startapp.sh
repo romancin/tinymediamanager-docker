@@ -30,7 +30,7 @@ is_tmm_running() {
 }
 
 start_tmm() {
-        /opt/jre/bin/java -jar /config/getdown.jar /config > /config/logs/output.log 2>&1 &
+        /opt/jre/bin/java -Dsilent=noupdate -jar /config/getdown.jar /config > /config/logs/output.log 2>&1 &
 }
 
 kill_tmm() {
@@ -48,7 +48,7 @@ if ! is_tmm_running; then
 fi
 
 TMM_NOT_RUNNING=0
-while [ "$TMM_NOT_RUNNING" -lt 5 ]
+while [ "$TMM_NOT_RUNNING" -lt 60 ]
 do
     if is_tmm_running; then
         TMM_NOT_RUNNING=0
