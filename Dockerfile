@@ -39,7 +39,7 @@ RUN \
 
 # Maximize only the main/initial window.
 RUN \
-    sed-patch 's/<application type="normal">/<application type="normal" title="tinyMediaManager \/ 2.9.13">/' \
+    sed-patch 's/<application type="normal">/<application type="normal" title="tinyMediaManager \/ 2.9.14">/' \
         /etc/xdg/openbox/rc.xml
 
 # Generate and install favicons.
