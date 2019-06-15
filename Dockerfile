@@ -6,7 +6,7 @@
 #FROM jlesage/baseimage-gui:alpine-3.5-glibc-v3.3.4
 FROM jlesage/baseimage-gui:alpine-3.8-glibc
 # Define software download URLs.
-ARG TMM_URL=https://release.tinymediamanager.org/dist/tmm_2.9.14_096b083_linux.tar.gz
+ARG TMM_URL=https://github.com/tinyMediaManager/tinyMediaManager/archive/tinyMediaManager-2.9.17.1.tar.gz
 ARG ORACLEJAVAJRE_URL=http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/server-jre-8u131-linux-x64.tar.gz
 
 # Define working directory.

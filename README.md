@@ -14,6 +14,8 @@ Based on Alpine Linux, which provides a very small size.
 
 Tested and working on Synology and QNAP, but should work on any x86_64 devices.
 
+Thanks to @jlesage for a great base image for GUI apps.
+
 Instructions: 
 - Map any local port to 5800 for web access
 - Map any local port to 5900 for VNC access
