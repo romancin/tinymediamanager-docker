@@ -6,7 +6,7 @@
 #FROM jlesage/baseimage-gui:alpine-3.5-glibc-v3.3.4
 FROM jlesage/baseimage-gui:alpine-3.8-glibc
 # Define software download URLs.
-ARG TMM_URL=https://github.com/tinyMediaManager/tinyMediaManager/archive/tinyMediaManager-2.9.16.tar.gz
+ARG TMM_URL=https://github.com/tinyMediaManager/tinyMediaManager/archive/tinyMediaManager-2.9.17.1.tar.gz
 ARG ORACLEJAVAJRE_URL=http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/server-jre-8u131-linux-x64.tar.gz
 
 # Define working directory.
@@ -39,7 +39,7 @@ RUN \
 
 # Maximize only the main/initial window.
 RUN \
-    sed-patch 's/<application type="normal">/<application type="normal" title="tinyMediaManager \/ 2.9.13">/' \
+    sed-patch 's/<application type="normal">/<application type="normal" title="tinyMediaManager \/ 2.9.14">/' \
         /etc/xdg/openbox/rc.xml
 
 # Generate and install favicons.
@@ -49,6 +49,7 @@ RUN \
 
 # Add files.
 COPY rootfs/ /
+COPY VERSION /
 
 # Set environment variables.
 ENV APP_NAME="TinyMediaManager" \
