@@ -36,4 +36,4 @@ pipeline {
             telegramSend '[Jenkins] - Pipeline CI-tinymediamanager-docker $BUILD_URL finalizado con estado :: $BUILD_STATUS'    
         }
     }
-
+}
