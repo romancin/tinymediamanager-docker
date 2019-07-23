@@ -1,13 +1,15 @@
 #
 # TinyMediaManager Dockerfile
 #
+FROM jlesage/baseimage-gui:alpine-3.9-glibc-v3.5.2
 
-#FROM jlesage/baseimage-gui:alpine-3.8
-#FROM jlesage/baseimage-gui:alpine-3.5-glibc-v3.3.4
-FROM jlesage/baseimage-gui:alpine-3.8-glibc
+# Define software versions.
+ARG JAVAJRE_VERSION=8.212.04.2
+ARG TMM_VERSION=3.0.2
+
 # Define software download URLs.
-ARG TMM_URL=https://github.com/tinyMediaManager/tinyMediaManager/archive/tinyMediaManager-2.9.17.1.tar.gz
-ARG ORACLEJAVAJRE_URL=http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/server-jre-8u131-linux-x64.tar.gz
+ARG TMM_URL=https://release.tinymediamanager.org/v3/dist/tmm_${TMM_VERSION}_linux.tar.gz
+ARG JAVAJRE_URL=https://d3pxv6yz143wms.cloudfront.net/${JAVAJRE_VERSION}/amazon-corretto-${JAVAJRE_VERSION}-linux-x64.tar.gz
 
 # Define working directory.
 WORKDIR /tmp
@@ -22,8 +24,7 @@ RUN \
 RUN \
     add-pkg --virtual build-dependencies curl && \
     mkdir /opt/jre && \
-    curl -# -L -H "Cookie: oraclelicense=accept-securebackup-cookie" ${ORACLEJAVAJRE_URL} | tar -xz --strip 2 -C /opt/jre jdk1.8.0_131/jre && \
-    rm -r /opt/jre/lib/oblique-fonts && \
+    curl -# -L ${JAVAJRE_URL} | tar -xz --strip 2 -C /opt/jre amazon-corretto-${JAVAJRE_VERSION}-linux-x64/jre && \
     del-pkg build-dependencies
 
 # Install dependencies.
@@ -38,13 +39,14 @@ RUN \
         ttf-dejavu
 
 # Maximize only the main/initial window.
-RUN \
-    sed-patch 's/<application type="normal">/<application type="normal" title="tinyMediaManager \/ 2.9.14">/' \
-        /etc/xdg/openbox/rc.xml
+# It seems this is not needed for TMM 3.X version.
+#RUN \
+#    sed-patch 's/<application type="normal">/<application type="normal" title="tinyMediaManager \/ 3.0.2">/' \
+#        /etc/xdg/openbox/rc.xml
 
 # Generate and install favicons.
 RUN \
-    APP_ICON_URL=https://github.com/tinyMediaManager/tinyMediaManager/raw/master/AppBundler/tmm.png && \
+    APP_ICON_URL=https://gitlab.com/tinyMediaManager/tinyMediaManager/raw/45f9c702615a55725a508523b0524166b188ff75/AppBundler/tmm.png && \
     install_app_icon.sh "$APP_ICON_URL"
 
 # Add files.
