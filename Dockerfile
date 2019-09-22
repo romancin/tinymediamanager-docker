@@ -1,7 +1,7 @@
 #
 # TinyMediaManager Dockerfile
 #
-FROM jlesage/baseimage-gui:alpine-3.9-glibc-v3.5.2
+FROM jlesage/baseimage-gui:alpine-3.9-glibc
 
 # Define software versions.
 ARG JAVAJRE_VERSION=8.212.04.2
