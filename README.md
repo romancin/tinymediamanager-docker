@@ -279,3 +279,6 @@ server {
 Having troubles with the container or have questions?  Please
 [create a new issue].
 
+## Changelog
+
+v1.0.1 (22/09/2019): Updated to latest image from jlesage and added Jenkinsfile for CI
