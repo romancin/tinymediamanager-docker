@@ -4,13 +4,12 @@
 FROM jlesage/baseimage-gui:alpine-3.10-glibc
 
 # Define software versions.
-ARG JAVAJRE_VERSION=8.212.04.2
+ARG JAVAJRE_VERSION=8u231
 ARG TMM_VERSION=3.1
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v3/dist/tmm_${TMM_VERSION}_linux.tar.gz
-ARG JAVAJRE_URL=https://d3pxv6yz143wms.cloudfront.net/${JAVAJRE_VERSION}/amazon-corretto-${JAVAJRE_VERSION}-linux-x64.tar.gz
-
+ARG JAVAJRE_URL=https://download.oracle.com/otn/java/jdk/8u231-b11/5b13a193868b4bf28bcb45c792fce896/jre-{JAVAJRE_VERSION}-linux-x64.tar.gz
 # Define working directory.
 WORKDIR /tmp
 
