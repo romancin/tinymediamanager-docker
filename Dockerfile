@@ -1,15 +1,15 @@
 #
 # TinyMediaManager Dockerfile
 #
-FROM jlesage/baseimage-gui:alpine-3.9-glibc
+FROM jlesage/baseimage-gui:alpine-3.10-glibc
 
 # Define software versions.
-ARG JAVAJRE_VERSION=8.212.04.2
-ARG TMM_VERSION=3.0.4
+ARG JAVAJRE_VERSION=8.232.09.1
+ARG TMM_VERSION=3.1.1
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v3/dist/tmm_${TMM_VERSION}_linux.tar.gz
-ARG JAVAJRE_URL=https://d3pxv6yz143wms.cloudfront.net/${JAVAJRE_VERSION}/amazon-corretto-${JAVAJRE_VERSION}-linux-x64.tar.gz
+ARG JAVAJRE_URL=https://corretto.aws/downloads/resources/${JAVAJRE_VERSION}/amazon-corretto-${JAVAJRE_VERSION}-linux-x64.tar.gz
 
 # Define working directory.
 WORKDIR /tmp
