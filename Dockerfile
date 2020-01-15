@@ -5,12 +5,13 @@ FROM jlesage/baseimage-gui:alpine-3.10-glibc
 
 # Define software versions.
 ARG JAVAJRE_VERSION=8.232.09.1
-ARG TMM_VERSION=3.1.1
+ARG TMM_VERSION=3.1.2
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v3/dist/tmm_${TMM_VERSION}_linux.tar.gz
 ARG JAVAJRE_URL=https://corretto.aws/downloads/resources/${JAVAJRE_VERSION}/amazon-corretto-${JAVAJRE_VERSION}-linux-x64.tar.gz
-
+ENV JAVA_HOME=/opt/jre/bin
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jre/bin
 # Define working directory.
 WORKDIR /tmp
 
@@ -36,7 +37,8 @@ RUN \
         # workaround.
         #openjdk8-jre \
         libmediainfo \
-        ttf-dejavu
+        ttf-dejavu \
+        bash
 
 # Maximize only the main/initial window.
 # It seems this is not needed for TMM 3.X version.
