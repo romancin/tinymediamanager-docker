@@ -36,6 +36,21 @@ romancin/tinymediamanager:latest
 
 Browse to `http://your-host-ip:5800` to access the TinyMediaManager GUI.
 
+Since 3.1.2 tag, tinyMediaManagerCMD.sh script is working. this way you can use TMM unattended in your automation flow. 
+
+** IMPORTANT** For this to work, you cannot have another TMM container running.
+
+To run a container for this functionality, execute:
+
+```bash
+docker run --rm --name=tinymediamanagerscript \
+-v /share/Container/tinymediamanager/config:/config \
+-v /share/media:/media \
+-e GROUP_ID=0 -e USER_ID=0 -e TZ=Europe/Madrid \
+romancin/tinymediamanager:develop /config/tinyMediaManagerCMD.sh -updateMovies -scrapeNew
+```
+Note --rm flag will delete it when finishes processing.
+
 ### Environment Variables
 
 To customize some properties of the container, the following environment
