@@ -64,6 +64,6 @@ pipeline {
   }
   post {
         success {
-            telegramSend(message: '[Jenkins] - Pipeline QNAP Backup to Synology $BUILD_URL finalizado con estado :: $BUILD_STATUS', chatId: -395961814) }
+            telegramSend(message: '[Jenkins] - Pipeline CI-tinymediamanager-docker $BUILD_URL finalizado con estado :: $BUILD_STATUS', chatId: -395961814) }
   }
  }
