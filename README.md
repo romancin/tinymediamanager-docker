@@ -1,6 +1,6 @@
 # tinymediamanager-docker
 
-A repository for creating a docker container including TinyMediaManager with GUI interface.
+A repository for creating a docker container including TinyMediaManager with GUI interface (with Chinese fonts).
 
 [![](https://images.microbadger.com/badges/version/romancin/tinymediamanager.svg)](https://microbadger.com/images/romancin/tinymediamanager "Docker image version")
 [![](https://images.microbadger.com/badges/image/romancin/tinymediamanager.svg)](https://microbadger.com/images/romancin/tinymediamanager "Docker image size")
