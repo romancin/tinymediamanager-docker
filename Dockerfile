@@ -4,11 +4,11 @@
 FROM jlesage/baseimage-gui:alpine-3.11-glibc
 
 # Define software versions.
-ARG JAVAJRE_VERSION=8.242.08.1
-ARG TMM_VERSION=3.1.5
+ARG JAVAJRE_VERSION=8.252.09.1
+ARG TMM_VERSION=3.1.6
 
 # Define software download URLs.
-ARG TMM_URL=https://release.tinymediamanager.org/v3/dist/tmm_${TMM_VERSION}_linux.tar.gz
+ARG TMM_URL=http://release.tinymediamanager.org/v3/dist/tmm_${TMM_VERSION}_linux.tar.gz
 ARG JAVAJRE_URL=https://corretto.aws/downloads/resources/${JAVAJRE_VERSION}/amazon-corretto-${JAVAJRE_VERSION}-linux-x64.tar.gz
 ENV JAVA_HOME=/opt/jre/bin
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jre/bin
