@@ -6,17 +6,21 @@ A repository for creating a docker container including TinyMediaManager with GUI
 [![](https://images.microbadger.com/badges/image/romancin/tinymediamanager.svg)](https://microbadger.com/images/romancin/tinymediamanager "Docker image size")
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X2CT2SWQCP74U)
 
-You can invite me a beer if you want ;) 
+If you are migrating from v3 to v4, please make a backup before. I recommend you create a new host directory to map the new config, and copy the "/config/data" folder from v3 version to it.
+Take a look at the official upgrade documentation here:
+https://www.tinymediamanager.org/docs/upgrade-v4
+
+You can invite me a beer if you want ;)
 
 This is a completely funcional Docker image with TinyMediaManager.
 
-Based on Alpine Linux, which provides a very small size. 
+Based on Alpine Linux, which provides a very small size.
 
 Tested and working on Synology and QNAP, but should work on any x86_64 devices.
 
 Thanks to @jlesage for a great base image for GUI apps.
 
-Instructions: 
+Instructions:
 - Map any local port to 5800 for web access
 - Map any local port to 5900 for VNC access
 - Map a local volume to /config (Stores configuration data)
@@ -31,25 +35,18 @@ docker run -d --name=tinymediamanager \
 -e GROUP_ID=0 -e USER_ID=0 -e TZ=Europe/Madrid \
 -p 5800:5800 \
 -p 5900:5900 \
-romancin/tinymediamanager:latest
+romancin/tinymediamanager:v4-latest
 ```
 
 Browse to `http://your-host-ip:5800` to access the TinyMediaManager GUI.
 
-Since 3.1.2 tag, tinyMediaManagerCMD.sh script is working. this way you can use TMM unattended in your automation flow. 
+### Image TAGs available
 
-** IMPORTANT** For this to work, you cannot have another TMM container running.
-
-To run a container for this functionality, execute:
-
-```bash
-docker run --rm --name=tinymediamanagerscript \
--v /share/Container/tinymediamanager/config:/config \
--v /share/media:/media \
--e GROUP_ID=0 -e USER_ID=0 -e TZ=Europe/Madrid \
-romancin/tinymediamanager:develop /config/tinyMediaManagerCMD.sh -updateMovies -scrapeNew
-```
-Note --rm flag will delete it when finishes processing.
+| TAG       | Description                                  |
+|-----------|----------------------------------------------|
+|`latest`| Latest available version of **TMM v3** |
+|`latest-v4`| Latest available version of **TMM v4** |
+|`vX.X.X` | Points directly to one of the TMM versions available, v3 or v4 |
 
 ### Environment Variables
 
@@ -295,6 +292,8 @@ Having troubles with the container or have questions?  Please
 [create a new issue].
 
 ## Changelog
+
+v4.1.1 (16/03/2021): First version of TMM v4 (v4.1.1)
 
 v3.1.10 (31/10/2020): Updated TMM to 3.1.10
 
