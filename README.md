@@ -2,25 +2,30 @@
 
 A repository for creating a docker container including TinyMediaManager with GUI interface.
 
-[![](https://images.microbadger.com/badges/version/romancin/tinymediamanager.svg)](https://microbadger.com/images/romancin/tinymediamanager "Docker image version")
-[![](https://images.microbadger.com/badges/image/romancin/tinymediamanager.svg)](https://microbadger.com/images/romancin/tinymediamanager "Docker image size")
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X2CT2SWQCP74U)
+![docker pulls](https://img.shields.io/docker/pulls/romancin/tinymediamanager.svg) ![docker stars](https://img.shields.io/docker/stars/romancin/tinymediamanager.svg) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X2CT2SWQCP74U)
+
+Latest versions:
+
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/romancin/tinymediamanager/v4) ![docker size](https://img.shields.io/docker/image-size/romancin/tinymediamanager/v4) 
+
+![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/romancin/tinymediamanager/v3) ![docker size](https://img.shields.io/docker/image-size/romancin/tinymediamanager/v3) 
+
 
 If you are migrating from v3 to v4, please make a backup before. I recommend you create a new host directory to map the new config, and copy the "/config/data" folder from v3 version to it.
 Take a look at the official upgrade documentation here:
 https://www.tinymediamanager.org/docs/upgrade-v4
 
-You can invite me a beer if you want ;)
+You can invite me a beer if you want ;) 
 
 This is a completely funcional Docker image with TinyMediaManager.
 
-Based on Alpine Linux, which provides a very small size.
+Based on Alpine Linux, which provides a very small size. 
 
 Tested and working on Synology and QNAP, but should work on any x86_64 devices.
 
 Thanks to @jlesage for a great base image for GUI apps.
 
-Instructions:
+Instructions: 
 - Map any local port to 5800 for web access
 - Map any local port to 5900 for VNC access
 - Map a local volume to /config (Stores configuration data)
@@ -300,3 +305,4 @@ v3.1.10 (31/10/2020): Updated TMM to 3.1.10
 v3.1.8 (09/09/2020): Updated to latest image from jlesage for Alpine 3.12, updated Corretto to current 1.8 version and TMM to 3.1.8
 
 v1.0.1 (22/09/2019): Updated to latest image from jlesage and added Jenkinsfile for CI
+
