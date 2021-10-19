@@ -40,7 +40,7 @@ docker run -d --name=tinymediamanager \
 -e GROUP_ID=0 -e USER_ID=0 -e TZ=Europe/Madrid \
 -p 5800:5800 \
 -p 5900:5900 \
-romancin/tinymediamanager:v4-latest
+romancin/tinymediamanager:latest-v4
 ```
 
 Browse to `http://your-host-ip:5800` to access the TinyMediaManager GUI.
