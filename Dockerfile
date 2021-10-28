@@ -4,8 +4,8 @@
 FROM jlesage/baseimage-gui:alpine-3.12-glibc
 
 # Define software versions.
-ARG JAVAJRE_VERSION=8.282.08.1
-ARG TMM_VERSION=3.1.13
+ARG JAVAJRE_VERSION=8.312.07.1
+ARG TMM_VERSION=3.1.16.1
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v3/dist/tmm_${TMM_VERSION}_linux.tar.gz
