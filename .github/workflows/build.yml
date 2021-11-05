@@ -1,0 +1,40 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+
+jobs:
+  collect_tags:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v1
+      - run: echo "find upstream tags"
+      - id: set_matrix
+        run: |
+          # ref: https://tomasvotruba.com/blog/2020/11/16/how-to-make-dynamic-matrix-in-github-actions/
+          # https://github.community/t/how-to-create-dynamic-matrix-value/17326/3
+          # fromJson https://github.blog/changelog/2020-04-15-github-actions-new-workflow-features/
+
+          # Find my last push time
+          MY_LAST_PUSH=$(curl -L -s --max-time 10 'https://registry.hub.docker.com/v2/repositories/dzhuang/tinymediamanager/tags?page_size=1024'|jq -r '[."results" | sort_by(.tag_last_pushed)[]][-1].tag_last_pushed')
+
+          # Get upstream pushs that are later than mine, with dev-version excluded
+          NEW_TAGS=$(curl -L -s --max-time 10 'https://registry.hub.docker.com/v2/repositories/romancin/tinymediamanager/tags?page_size=1024'| jq -r '[."results"[] | select(.tag_last_pushed |. >$s ) | select(.name|contains("dev")|not) | .name | tostring]' --arg s $MY_LAST_PUSH)
+          echo "::set-output name=matrix::{\"tag\": $NEW_TAGS}"
+
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: ${{ steps.collect_tags.matrix }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build (${{ matrix.tag }})
+        id: image_built
+        run: |
+          echo ${{ matrix.tag }}
