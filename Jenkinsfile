@@ -10,7 +10,7 @@ podTemplate(label: 'github-docker-builder', cloud: 'kubernetes', serviceAccount:
     node('github-docker-builder') {
         stage('Cloning Git Repository') {
           steps {
-            git url: 'https://github.com/romancin/tinymediamanager4-docker.git',
+            git url: 'https://github.com/romancin/tinymediamanager-docker.git',
             branch: '$BRANCH_NAME'
           }
         }
@@ -29,7 +29,7 @@ podTemplate(label: 'github-docker-builder', cloud: 'kubernetes', serviceAccount:
                   def patch = gitbranch + '-' + version.trim()
                 }
                 sh """
-                     buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=${registry}:${gitbranch}-v4,push=true
+                     buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=${registry}:${gitbranch}-v3,push=true
                      buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=${registry}:${major},push=true
                      buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=${registry}:${minor},push=true
                      buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=${registry}:${patch},push=true
@@ -52,7 +52,7 @@ podTemplate(label: 'github-docker-builder', cloud: 'kubernetes', serviceAccount:
                   def patch = gitbranch + '-' + version.trim()
                 }
                 sh """
-                     buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=${registry}:latest-v4,push=true
+                     buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=${registry}:latest-v3,push=true
                      buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=${registry}:${major},push=true
                      buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=${registry}:${minor},push=true
                      buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=${registry}:${patch},push=true
