@@ -69,10 +69,3 @@ properties([[
         artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10']
     ]
 ]);
-
-
-  post {
-        success {
-            telegramSend(message: '[Jenkins] - Pipeline CI-tinymediamanager-docker $BUILD_URL finalizado con estado :: $BUILD_STATUS', chatId: -395961814) }
-  }
-}
