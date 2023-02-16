@@ -1,3 +1,11 @@
+def secrets = [
+    [path: 'secret/services/dockerhub', engineVersion: 2, secretValues: [
+        [envVar: 'DOCKERHUB_USERNAME', vaultKey: 'username'],
+        [envVar: 'DOCKERHUB_PASSWORD', vaultKey: 'password']]],
+    [path: 'secret/notifications/discord', engineVersion: 2, secretValues: [
+        [envVar: 'DISCORD_WEBHOOK', vaultKey: 'webhook']]]
+  ]
+
 registry="romancin/tinymediamanager"
 
 podTemplate(label: 'github-docker-builder', cloud: 'kubernetes',
@@ -51,7 +59,7 @@ podTemplate(label: 'github-docker-builder', cloud: 'kubernetes',
              }
              container('docker-readme') {
                withEnv(['DOCKERHUB_REPO_NAME=tinymediamanager']) {
-                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+                 withVault([vaultSecrets: secrets]) {
                       sh """
                       export DOCKERHUB_USERNAME=${DOCKERHUB_USERNAME}
                       export DOCKERHUB_PASSWORD=${DOCKERHUB_PASSWORD}
@@ -64,7 +72,7 @@ podTemplate(label: 'github-docker-builder', cloud: 'kubernetes',
            }
          }
         stage('Notify Build Result') {
-          withCredentials([string(credentialsId: 'discord-webhook-notificaciones', variable: 'DISCORD_WEBHOOK')]) {
+          withVault([vaultSecrets: secrets]) {
             discordSend description: "[Jenkins] - Pipeline CI-docker-tinymediamanager", footer: "", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "${DISCORD_WEBHOOK}"
           }
         }
